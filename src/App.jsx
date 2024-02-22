@@ -11,7 +11,8 @@ function App() {
     setInputText(newValue);
   }
 
-  function addItem() {
+  function addItem(e) {
+    e.preventDefault();
     setItems((prevItems) => {
       return [...prevItems, inputText];
     });
@@ -27,17 +28,17 @@ function App() {
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
+      <form className="form">
         <input
           onChange={handleChange}
           type="text"
           value={inputText}
           name="input"
         />
-        <button onClick={addItem}>
+        <button type="submit" onClick={addItem}>
           <span>Add</span>
         </button>
-      </div>
+      </form>
       <div>
         <ul>
           {items.map((todoItem, index) => (
